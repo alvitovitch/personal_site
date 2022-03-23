@@ -5,12 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./src/styles/reset.scss">
-    <link rel="stylesheet" href="./src/styles/main.css">
-    <link rel="stylesheet" href="./dist/main.css" />
+    <link rel="stylesheet" type="text/css" href="src/styles/reset.css">
+    <link rel="stylesheet" type="text/css" href="src/styles/main.css">
+    <!-- <link rel="stylesheet" href="../dist/main.css" /> -->
    
     <title>Andrew Vitovitch</title>
-    <link rel="icon" type="image/x-icon" href="./src/assets/logo/id-183610---top-hat.svg"/>
     <meta property="og:title" content="Andrew Vitovitch" />
     <!-- <meta property="og:image" content="./src/assets/DnD.gif" />
     <meta property="og:description" content="Welcome to Down and Dandy! A point and click mystery. Gary has sabatoging your haberdashery and it's up to you to prove it! Pick up clues and talk to NPCs to figure out the mystery. Made with JavaScript and Three.js" />
@@ -19,7 +18,78 @@
 </head>
 
 <body>
+    <div id="container">
+        <div class="content" id="about">
+                <header>
+                    <h2>About</h2>
+                    <p>The man... The myth... The legend...</p>
+                </header>
+                <div id='poke-about'>
+                    <img id='poke' src="src/images/189074681_493496372075279_3464237611437513443_n.jpg" alt=""/>
+                    <p>Hi my name is Andrew and I am a software engineer. <br/> 
+                        <br/>
+                         When the pandemic hit I decided to make the most of my time and I tried a Codecademy course. 
+                         I soon devoured their Python 2 course and continued on to Python 3. 
+                         By the time I finished ‘Automate the Boring Stuff’ I knew I had to take this to the next level.
+                           <br/> I applied and was accepted to App Academy, a thousand hour full stack bootcamp, where I honed
+                           my skills and became a software engineer. My time as an artistic creative has developed my mental flexibility as well as my ability to work in any group.
+                              I look forward to using those skills to help you achieve even greater heights!</p>
+                </div>
+        </div>
+        <div class="content" id="projects">
+            <div>
+                <h2 id='whet'>Some things to whet your appetite</h2>
+                <div class="features">
+                <section >
+                    <header>
+                        <h3>Down and Dandy</h3>
+                    </header>
+                    <div class="image-wrapper">
+                        <a href="https://alvitovitch.github.io/Down-and-Dandy/" class="image featured"><img class='projectPic' src="src/images/Haberdashery2.png" alt="" /></a>
+                    </div>
+                    
+                    <p>A tale of sartorial sabotage. Play as Archibald, the owner of a haberdashery in the downtown metro area 
+                        as you uncover who has been sabotaging your small business. Built with JavaScript and Three.js.
+                    </p>
+                    <ul class="actions">
+                        <li><a href="https://alvitovitch.github.io/Down-and-Dandy/" class="button">Cheerio</a></li>
+                    </ul>
+                </section>
+                <section >
+                    <header>
+                        <h3>Order</h3>
+                    </header>
+                    <div class="image-wrapper">
+                        <a href="https://app-order-vitovitch.herokuapp.com/" class="image featured"><img class='projectPic' src="src/images/OrderScreenShot2.png" alt="" /></a>
+                    </div>
+                    
+                    <p>A fullstack clone of Discord, a community driven live-chat app. Make servers and talk with friends in real time! Order uses Rails on the backend, React/Redux on the front, and Redis for websocket management.</p>
+                    <ul class="actions">
+                        <li><a href="https://app-order-vitovitch.herokuapp.com/" class="button">Let's Chat</a></li>
+                    </ul>
+                </section>
+                <section >
+                    <header>
+                        <h3>Pictophone</h3>
+                    </header>
+                    <div class="image-wrapper">
+                        <a href="https://pictophone.herokuapp.com/" class="image featured"><img class='projectPic' src="src/images/pictophone2.png" alt="" /></a>
+                    </div>
+                    
+                    <p>The lovechild of Pictonary and Telephone. Chat live with other players and draw on the community canvas while waiting for the round to start.
+                        Pictophone is made using the MERN stack with Socket.io for websocket management. 
+                    </p>
+                    <ul class="actions">
+                        <li><a href="https://pictophone.herokuapp.com/" class="button">Drop a line</a></li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+        <div class="content" id="contact"></div>
+        <div class="content" id="home"></div>
+        <div class="content" id="links"></div>
+        <div class="content" id="resume"></div>
+    </div>
 </body>
-
     <script src="./dist/main.js"></script>
 </html>

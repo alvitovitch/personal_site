@@ -5,6 +5,7 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 
+
 const params = {
 	exposure: 4,
 	bloomStrength: 2.4,
@@ -91,12 +92,12 @@ loader.load('src/models/rainbowTwo.gltf', function (gltf) {
 loader.load('src/models/about.gltf', function (gltf) {
 	const model = gltf.scene;
 	model.name = 'about'
-	model.scale.x = .05 
-	model.scale.y = .05 
-	model.scale.z = .05
+	model.scale.x = .04 
+	model.scale.y = .04 
+	model.scale.z = .04
 	model.position.x = -1.5;
 	model.position.z = -.4
-	model.position.y = .3
+	model.position.y = .5
 	model.spin = 0
 
 	scene.add(model)
@@ -108,12 +109,12 @@ loader.load('src/models/about.gltf', function (gltf) {
 loader.load('src/models/projects.gltf', function (gltf) {
 	const model = gltf.scene;
 	model.name = 'projects'
-	model.scale.x = .05 
-	model.scale.y = .05 
-	model.scale.z = .05
+	model.scale.x = .04 
+	model.scale.y = .04 
+	model.scale.z = .04
 	model.position.x = -1.3;
 	model.position.z = -.4
-	model.position.y = .3
+	model.position.y = .5
 	model.spin = 0
 
 	scene.add(model)
@@ -123,12 +124,12 @@ loader.load('src/models/home.gltf', function (gltf) {
 	const model = gltf.scene;
 	model.name = 'home'
 	model.delta = .001
-	model.scale.x = .05 
-	model.scale.y = .05 
-	model.scale.z = .05
+	model.scale.x = .04 
+	model.scale.y = .04 
+	model.scale.z = .04
 	model.position.x = -1.1;
 	model.position.z = -.4
-	model.position.y = .3
+	model.position.y = .5
 	model.spin = 0
 
 	scene.add(model)
@@ -139,12 +140,12 @@ loader.load('src/models/home.gltf', function (gltf) {
 loader.load('src/models/links.gltf', function (gltf) {
 	const model = gltf.scene;
 	model.name = 'links'
-	model.scale.x = .05 
-	model.scale.y = .05 
-	model.scale.z = .05
+	model.scale.x = .04 
+	model.scale.y = .04 
+	model.scale.z = .04
 	model.position.x = -.9;
 	model.position.z = -.4
-	model.position.y = .3
+	model.position.y = .5
 	model.spin = 0
 
 	scene.add(model)
@@ -153,12 +154,12 @@ loader.load('src/models/links.gltf', function (gltf) {
 loader.load('src/models/resume.gltf', function (gltf) {
 	const model = gltf.scene;
 	model.name = 'resume'
-	model.scale.x = .05 
-	model.scale.y = .05 
-	model.scale.z = .05
+	model.scale.x = .04 
+	model.scale.y = .04 
+	model.scale.z = .04
 	model.position.x = -.7;
 	model.position.z = -.4
-	model.position.y = .3
+	model.position.y = .5
 	model.spin = 0
 
 	scene.add(model)
@@ -172,12 +173,12 @@ loader.load('src/models/contact.gltf', function (gltf) {
 	const model = gltf.scene;
 	model.name = 'contact'
 	model.delta = .001
-	model.scale.x = .05 
-	model.scale.y = .05 
-	model.scale.z = .05
+	model.scale.x = .04 
+	model.scale.y = .04 
+	model.scale.z = .04
 	model.position.x = -.5;
 	model.position.z = -.4
-	model.position.y = .3
+	model.position.y = .5
 	model.spin = 0
 	scene.add(model)
 	
@@ -187,9 +188,9 @@ loader.load('src/models/contact.gltf', function (gltf) {
 loader.load('src/models/ship.gltf', function (gltf) {
 	const model = gltf.scene;
 	model.name = 'ship'
-	model.scale.x = .05
-	model.scale.z = .05
-	model.scale.y = .05
+	model.scale.x = .04 
+	model.scale.y = .04 
+	model.scale.z = .04
 	model.position.x = -.5;
 	model.position.z = -.2
 	model.position.y = -.1
@@ -279,6 +280,7 @@ function bulletTracking(ship, target) {
 	bullet.position.z -=.03
   	bullet.lookAt(target.position)
 	bullet.visible = true
+	
 	setInterval(() => {
 		if(bullet) {
 			scene.remove(bullet)}
@@ -302,7 +304,7 @@ function animation() {
 			child.rotation.x += .0001
 		}
 		if (tabs.has(child.name)) {
-			child.position.y = Math.cos( time ) * .01 + .3
+			child.position.y = Math.cos( time ) * .01 + .34
 		}
 	}
 	if (intersects[0].object.name === 'track') {
@@ -318,6 +320,9 @@ function animation() {
 		bullet[0].translateZ(.01)
 		if (bullet[0].position.z < -.4){
 			bullet[1].spin = .05
+			for (let tab of tabs) {
+				document.getElementById(tab).style.opacity = 0
+			}
 			setInterval(() => {
 				if (bullet[1].spin > .02) {
 					bullet[1].spin -= .003
@@ -325,9 +330,14 @@ function animation() {
 					if (bullet[1].rotation.y > 6.2){
 						bullet[1].spin = 0
 						bullet[1].rotation.y = 0
+						if (bullet[1].name === 'resume'){
+							window.open(
+								"./src/images/Vitovitch-Andrew-Resume.pdf", "_blank");
+						  }
+						document.getElementById(bullet[1].name).style.opacity = 1
 						bullets.pop(bullets.indexOf(bullet))
 					}
-			}}, 100)
+			}}, 90)
 			scene.remove(bullet[0])
 		}
 	}

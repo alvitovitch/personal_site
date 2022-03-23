@@ -1,9 +1,160 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url('./MVBOLI.TTF');
+  }
+
 body {
     overflow: hidden;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    font-family: myFirstFont
 }
 
 canvas {
     position: absolute;
     top:0;
     left: 0;
+}
+
+#container {
+    position: absolute;
+    z-index: 2;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.789);
+    flex-direction: column;
+    width: 70%;
+    max-height: 60%;
+    border-radius: 1em;
+    overflow-y: auto;
+    position: absolute;
+    opacity: 0;
+    transition: .7s;
+    padding: 2em;
+    color: rgba(255, 255, 255, 0.952);
+}
+
+#about {
+    box-shadow: 0 0 .2em .2em rgb(255, 0, 0),  /* inner white */
+    0 0 .4em .4em rgb(255, 47, 47), /* middle magenta */
+    0 0 .6em .6em rgb(255, 94, 94); /* outer cyan */;
+}
+
+#projects {
+    box-shadow: 0 0 .2em .2em rgb(255, 123, 0),  /* inner white */
+    0 0 .4em .4em rgb(255, 102, 0), /* middle magenta */
+    0 0 .6em .6em rgb(255, 130, 57); /* outer cyan */;
+}
+#home {
+    box-shadow: 0 0 .2em .2em rgb(251, 255, 0),  /* inner white */
+    0 0 .4em .4em rgb(252, 255, 47), /* middle magenta */
+    0 0 .6em .6em rgb(255, 244, 94); /* outer cyan */;
+}
+#links {
+    box-shadow: 0 0 .2em .2em rgb(115, 255, 0),  /* inner white */
+    0 0 .4em .4em rgb(47, 255, 71), /* middle magenta */
+    0 0 .6em .6em rgb(121, 255, 94); /* outer cyan */;
+}
+#resume {
+    box-shadow: 0 0 .2em .2em rgb(0, 229, 255),  /* inner white */
+    0 0 .4em .4em rgb(47, 234, 255), /* middle magenta */
+    0 0 .6em .6em rgb(94, 234, 255); /* outer cyan */;
+}
+#contact {
+    box-shadow: 0 0 .2em .2em rgb(187, 0, 255),  /* inner white */
+    0 0 .4em .4em rgb(147, 47, 255), /* middle magenta */
+    0 0 .6em .6em rgb(204, 94, 255); /* outer cyan */;
+}
+
+#poke {
+    height: 15em;
+    border-radius: 1em;
+    width: auto;
+    
+}
+
+#poke-about {
+    display: flex;
+    gap: 2em;
+    align-items: center;
+    
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 1em;
+}
+
+header h2 {
+    font-size: 3em;
+}
+
+header p {
+    font-size: 2em;
+    line-height: 1.5;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.projectPic{
+    border-radius: 15px;
+    border: rgba(0, 0, 0, 0.415) solid 1px;
+    height: 10rem;
+    box-shadow: 0 0 .1em .1em rgb(255, 174, 0),  /* inner white */
+    0 0 .2em .2em rgb(255, 153, 0), /* middle magenta */
+    0 0 .4em .4em rgb(255, 146, 57); /* outer cyan */;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    align-items: stretch;
+}
+
+.features {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#whet {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+header h3 {
+    font-size: 1.5em;
+}
+
+section p {
+    text-align: center;
+    margin: 1em 0;
+}
+
+.actions li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
 }
