@@ -97,6 +97,8 @@ loader.load('src/models/about.gltf', function (gltf) {
 	model.position.x = -1.5;
 	model.position.z = -.4
 	model.position.y = .3
+	model.spin = 0
+
 	scene.add(model)
 	
 })
@@ -112,6 +114,8 @@ loader.load('src/models/projects.gltf', function (gltf) {
 	model.position.x = -1.3;
 	model.position.z = -.4
 	model.position.y = .3
+	model.spin = 0
+
 	scene.add(model)
 	
 })
@@ -125,6 +129,8 @@ loader.load('src/models/home.gltf', function (gltf) {
 	model.position.x = -1.1;
 	model.position.z = -.4
 	model.position.y = .3
+	model.spin = 0
+
 	scene.add(model)
 	
 })
@@ -139,6 +145,8 @@ loader.load('src/models/links.gltf', function (gltf) {
 	model.position.x = -.9;
 	model.position.z = -.4
 	model.position.y = .3
+	model.spin = 0
+
 	scene.add(model)
 })
 
@@ -151,6 +159,8 @@ loader.load('src/models/resume.gltf', function (gltf) {
 	model.position.x = -.7;
 	model.position.z = -.4
 	model.position.y = .3
+	model.spin = 0
+
 	scene.add(model)
 
 
@@ -168,6 +178,7 @@ loader.load('src/models/contact.gltf', function (gltf) {
 	model.position.x = -.5;
 	model.position.z = -.4
 	model.position.y = .3
+	model.spin = 0
 	scene.add(model)
 	
 })
@@ -176,11 +187,11 @@ loader.load('src/models/contact.gltf', function (gltf) {
 loader.load('src/models/ship.gltf', function (gltf) {
 	const model = gltf.scene;
 	model.name = 'ship'
-	model.scale.x = .1
-	model.scale.y = .1 
-	model.scale.z = .1
-	model.position.x = -1;
-	model.position.z = -.3
+	model.scale.x = .05
+	model.scale.z = .05
+	model.scale.y = .05
+	model.position.x = -.5;
+	model.position.z = -.2
 	model.position.y = -.1
 	model.rotation.y = 3 * Math.PI / 2
 	scene.add(model)
@@ -236,20 +247,48 @@ scene.add(ambientlight);
 // movement plane
 
 const geometry = new THREE.BoxGeometry( 1.2, 1, .1 );
-const material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+const material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
 const cube = new THREE.Mesh( geometry, material )
 cube.position.x = -1;
-cube.position.z = -.5
+cube.position.z = -.2
 cube.position.y = -.1
 cube.visible = false
 cube.name = 'track'
 scene.add(cube)
 
+// bullet
+
+const bullets = []
+// const bulletGeo = new THREE.SphereGeometry(.1,.1,.1)
+// const bullet = new THREE.Mesh( bulletGeo, material)
+// bullet.visible = false
+// bullet.name = 'bullet'
+// scene.add(bullet)
+// bullets.push(bullet)
+
+
+
+function bulletTracking(ship, target) {
+	const bulletGeo = new THREE.SphereGeometry(.01,.01,.01)
+	const bullet = new THREE.Mesh( bulletGeo, material)
+	bullet.visible = false
+	bullet.name = 'bullet'
+	scene.add(bullet)
+	bullets.push([bullet, target])
+	bullet.position.copy(ship.position); // start position - the tip of the weapon
+	bullet.position.z -=.03
+  	bullet.lookAt(target.position)
+	bullet.visible = true
+	setInterval(() => {
+		if(bullet) {
+			scene.remove(bullet)}
+	}, 1000)
+}
 // animation
 
 function animation() {
 	const time = clock.getElapsedTime();
-	const ship = scene.children[14]
+	const ship = scene.children.filter(child => (child.name === 'ship'))
 	raycaster.setFromCamera( mouseVector, camera );
 	const intersects = raycaster.intersectObjects( scene.children )
 	for (let child of scene.children) {
@@ -267,13 +306,29 @@ function animation() {
 		}
 	}
 	if (intersects[0].object.name === 'track') {
-		if (ship) {
-			ship.position.x =  intersects[0].point.x
+		if (ship.length > 0) {
+			ship[0].position.x =  intersects[0].point.x
 		}
 	}
-	if (intersects[0].object.name === 'links') {
-		if (ship) {
-			ship.lookAt(new THREE.Vector3(intersects[0].point))
+	for (let child of scene.children.filter(child => tabs.has(child.name))) {
+		child.rotation.y += child.spin
+	}
+
+	for (let bullet of bullets) {
+		bullet[0].translateZ(.01)
+		if (bullet[0].position.z < -.4){
+			bullet[1].spin = .05
+			setInterval(() => {
+				if (bullet[1].spin > .02) {
+					bullet[1].spin -= .003
+				} else {
+					if (bullet[1].rotation.y > 6.2){
+						bullet[1].spin = 0
+						bullet[1].rotation.y = 0
+						bullets.pop(bullets.indexOf(bullet))
+					}
+			}}, 100)
+			scene.remove(bullet[0])
 		}
 	}
 	renderer.render( scene, camera );
@@ -301,11 +356,14 @@ function onWindowResize(){
 }
 
 document.addEventListener('click', e => {
-	for (let i = 8; i <= 13; i++){
-		if (raycaster.intersectObjects(scene.children[i])){
-			debugger
-			console.log(scene.children[i].name)
+	const inter = raycaster.intersectObjects(scene.children)[1]
+	const ship = scene.children.filter(child => (child.name === 'ship'))[0]
+
+	if ( ship && inter && inter.object.parent && inter.object.parent.parent && tabs.has(inter.object.parent.parent.name) ) {
+		if (bullets.length == 0){
+			bulletTracking(ship, inter.object.parent.parent)	
 		}
 	}
+		
 	
 })
