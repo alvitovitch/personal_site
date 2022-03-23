@@ -439,6 +439,12 @@ document.addEventListener('click', e => {
 			laser.play()
 		}
 	}
-		
+	if (e.target.classList[0] === 'close') {
+		debugger
+		e.target.parentElement.style.opacity = 0
+		setTimeout( () => {
+			e.target.parentElement.style.display = 'none'
+		}, 1000)
+	}
 	
 })
