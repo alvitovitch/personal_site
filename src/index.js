@@ -332,7 +332,7 @@ function animation() {
 			child.position.y = Math.cos( time ) * .01 + .34
 		}
 		if (child.name === 'name') {
-			child.position.y = Math.cos( time ) * .01 + .1
+			child.position.y = Math.cos( time ) * .01 +.05
 		}
 	}
 	if (intersects[0].object.name === 'track') {
