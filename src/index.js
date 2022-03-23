@@ -6,16 +6,16 @@ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 
 const synth = new Audio('src/sound/synth.mp3');
-synth.volume = .3
+synth.volume = .1
 synth.play()
 
 
 
 const laser = new Audio('src/sound/laser.mp3');
-laser.volume = .3
+laser.volume = .1
 
 const collect = new Audio('src/sound/collect.mp3');
-collect.volume = .3
+collect.volume = .1
 let collectPlay = true
 
 const params = {
@@ -405,8 +405,9 @@ window.addEventListener('mouseup', e => {
 		}
 	}
 	if (e.target.id  === 'volume-slider'){
-		synth.volume = e.target.value/100 * .3
-		laser.volume = e.target.value/100 * .3
+		synth.volume = e.target.value/100 * .2
+		laser.volume = e.target.value/100 * .2
+		collect.volume = e.target.value/100 * .2
 	}
 })
 

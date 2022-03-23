@@ -31,7 +31,7 @@ canvas {
     display: none;
     background-color: rgba(0, 0, 0, 0.789);
     flex-direction: column;
-    width: 70%;
+    max-width: 70%;
     max-height: 60%;
     border-radius: 1em;
     overflow-y: auto;
@@ -59,6 +59,7 @@ canvas {
     0 0 .6em .6em rgb(255, 244, 94); /* outer cyan */;
 }
 #links {
+    width: 70%;
     box-shadow: 0 0 .2em .2em rgb(115, 255, 0),  /* inner white */
     0 0 .4em .4em rgb(47, 255, 71), /* middle magenta */
     0 0 .6em .6em rgb(121, 255, 94); /* outer cyan */;
@@ -69,6 +70,7 @@ canvas {
     0 0 .6em .6em rgb(94, 234, 255); /* outer cyan */;
 }
 #contact {
+    width: 60%;
     box-shadow: 0 0 .2em .2em rgb(187, 0, 255),  /* inner white */
     0 0 .4em .4em rgb(147, 47, 255), /* middle magenta */
     0 0 .6em .6em rgb(204, 94, 255); /* outer cyan */;
@@ -249,7 +251,11 @@ input[name=rangeInput] {
 }
 
 .form-button {
-    box-shadow: 0 0 .1em .1em rgb(187, 0, 255),  /* inner white */
-    0 0 .2em .2em rgb(147, 47, 255), /* middle magenta */
-    0 0 .3em .3em rgb(204, 94, 255); /* outer cyan */;
+    box-shadow: 0 0 .1em .1em rgb(187, 0, 255), /* inner white */ 0 0 .2em .2em rgb(147, 47, 255), /* middle magenta */ 0 0 .3em .3em rgb(204, 94, 255);
+    border-style: none;
+    border-radius: 1em;
+    padding: 1vh;
+    background: #8e00e95c;
+    color: white;
+    font-family: 'myFirstFont';
 }

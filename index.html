@@ -26,17 +26,25 @@
 				document.getElementById('contact-form').addEventListener('submit', function(event) {
 					event.preventDefault();
 					// generate a five digit number for the contact_number variable
-                    debugger
-					this.contact_number = Math.random() * 100000 | 0;
-					// these IDs from the previous steps
-					emailjs.sendForm('service_fpdu5yt', 'template_czyvpii', this)
-						.then(function() {
-							console.log('SUCCESS!');
-							const dataForm = document.getElementById('contact-form')
-							dataForm.innerHTML = "<h2>Thanks for reaching out!</h2>"
-						}, function(error) {
-							console.log('FAILED...', error);
-						});
+                    if (
+                        document.getElementById('name').value !== '' &&
+                        document.getElementById('email').value !== '' &&
+                        document.getElementById('message').value !== ''
+                    ) {
+                        document.getElementById('error').innerText = ''
+                        this.contact_number = Math.random() * 100000 | 0;
+                        // these IDs from the previous steps
+                        emailjs.sendForm('service_fpdu5yt', 'template_czyvpii', this)
+                            .then(function() {
+                                document.getElementById('hit-me-up').innerText = 'You hit me up!'
+                                const dataForm = document.getElementById('contact-form')
+                                dataForm.innerHTML = "<h2>Thanks for reaching out!</h2>"
+                            }, function(error) {
+                                console.log('FAILED...', error);
+                            });
+                    } else {
+                        document.getElementById('error').innerText = 'You need to enter all the fields'
+                    }
 				});
 			}
 		</script>
@@ -118,8 +126,8 @@
     <div class="content" id="contact">
         <div id="footer" class="container">
             <header class="major">
-                <h2>Hit me up</h2>
-                <p>I'll get back ASAP</p>
+                <h2 id="hit-me-up">Hit me up</h2>
+                <p id="error"></p>
             </header>
                     <form id="contact-form">
                             <div id="form-fields">
