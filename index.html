@@ -43,6 +43,10 @@
 </head>
 
 <body>
+    <div id="volume">
+        <img id='volume-icon'src="src/images/icons8-volume-64.png" alt="volume-icon">
+        <input type="range" min="0" max="100" value="50" class="slider" id="volume-slider">
+    </div>
     <div id="container">
         <div class="content" id="about">
                 <header>
@@ -118,24 +122,20 @@
                 <p>I'll get back ASAP</p>
             </header>
                     <form id="contact-form">
-                            <div>
-                                <input name="name" placeholder="Name" type="text" />
-                                <input name="email" placeholder="Email" type="text" />
-                            </div>
-                            <div>
-                                <textarea name="message" placeholder="Message"></textarea>
-                            </div>
+                            <div id="form-fields">
+                                <input id="name" name="name" placeholder="Name" type="text" />
+                                <input id='email'' name="email" placeholder="Email" type="text" />
                             
-                                <ul class="actions">
-                                    <li><input type="submit" value="Send Message" /></li>
-                                    <li><input type="reset" value="Clear form" /></li>
-                                </ul>
+                                <textarea id='message' name="message" placeholder="Message"></textarea>
                             </div>
-                        </div>
-                    </form>
+                                <div class="button-container">
+                                    <input class="form-button" type="submit" value="Send Message" />
+                                    <input class="form-button" type="reset" value="Clear form" />
+                                </div>
+                        </form>
+            </div>
 
         </div>
-    </div>
     <div class="content" id="home"></div>
     <div class="content" id="links">
         <ul>
@@ -146,6 +146,7 @@
             <li><a href="https://angel.co/u/andrew-vitovitch" target="_blank"><img src="src/images/logos/angellist-svgrepo-com.svg" alt=""></a></li>
             <li><a href="https://www.instagram.com/brooklyn_dandy/?hl=en" target="_blank"><img src="src/images/logos/instagram-svgrepo-com.svg" alt=""></a></li>
         </ul>
+    </div>
     </div>
     <div class="content" id="resume"></div>
 </div>

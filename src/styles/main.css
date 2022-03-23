@@ -161,6 +161,7 @@ section p {
     align-items: center;
     justify-content: center;
     font-size: 3vh;
+    width: 100%;
 }
 
 #links ul {
@@ -183,4 +184,72 @@ section p {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+#volume {
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    width: 3vw;
+    padding: 1vw;
+}
+
+#volume-icon {
+    filter: invert(1);
+    filter: hue-rotate(100);
+    user-select: none;
+}
+
+#volume-slider {
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* Chromium */
+    display: none;
+    background: #d3d3d35d;
+    outline: none;
+}
+input[name=rangeInput] {
+    color: #04AA6D;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    color: #04AA6D; /* Green background */
+    cursor: pointer;
+}
+#form-fields {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 1em;
+    box-shadow: 0 0 .2em .2em rgb(187, 0, 255),  /* inner white */
+    0 0 .4em .4em rgb(147, 47, 255), /* middle magenta */
+    0 0 .6em .6em rgb(204, 94, 255); /* outer cyan */;
+    border-radius: 1em;
+    background-color: rgb(228, 228, 228);
+}
+
+#name, #email, #message {
+    padding: 2vh;
+    border-style: none;
+    background-color: transparent;
+    outline: none;
+}
+#name, #email {
+    border-bottom: solid 1px rgba(94, 0, 157, 0.987);
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    margin-top: 2vh;
+}
+
+.form-button {
+    box-shadow: 0 0 .1em .1em rgb(187, 0, 255),  /* inner white */
+    0 0 .2em .2em rgb(147, 47, 255), /* middle magenta */
+    0 0 .3em .3em rgb(204, 94, 255); /* outer cyan */;
 }

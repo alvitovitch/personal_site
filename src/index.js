@@ -5,6 +5,18 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 
+const synth = new Audio('src/sound/synth.mp3');
+synth.volume = .3
+synth.play()
+
+
+
+const laser = new Audio('src/sound/laser.mp3');
+laser.volume = .3
+
+const collect = new Audio('src/sound/collect.mp3');
+collect.volume = .3
+let collectPlay = true
 
 const params = {
 	exposure: 4,
@@ -280,7 +292,7 @@ function bulletTracking(ship, target) {
 	bullet.position.z -=.03
   	bullet.lookAt(target.position)
 	bullet.visible = true
-	
+	collectPlay = true
 	setInterval(() => {
 		if(bullet) {
 			scene.remove(bullet)}
@@ -320,6 +332,11 @@ function animation() {
 		bullet[0].translateZ(.01)
 		if (bullet[0].position.z < -.4){
 			bullet[1].spin = .05
+			if (collectPlay){
+				collect.currentTime = 0
+				collect.play()
+				collectPlay = false
+			}
 			for (let tab of tabs) {
 				document.getElementById(tab).style.opacity = 0
 				setTimeout( () => { if (tab !== bullet[1].name) {document.getElementById(tab).style.display = 'none';}}, 1000)
@@ -362,6 +379,21 @@ document.addEventListener('mousemove', (e) => {
 
 window.addEventListener( 'resize', onWindowResize, false );
 
+window.addEventListener('mouseup', e => {
+	if (e.target.id === 'volume-icon') {
+		const volumeSlider = document.getElementById('volume-slider')
+		if (volumeSlider.style.display === '' || volumeSlider.style.display === 'none') {
+			volumeSlider.style.display = 'flex'
+		} else {
+			volumeSlider.style.display = 'none'
+		}
+	}
+	if (e.target.id  === 'volume-slider'){
+		synth.volume = e.target.value/100 * .3
+		laser.volume = e.target.value/100 * .3
+	}
+})
+
 function onWindowResize(){
 
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -372,12 +404,21 @@ function onWindowResize(){
 }
 
 document.addEventListener('click', e => {
+	synth.play()
 	const inter = raycaster.intersectObjects(scene.children)[1]
 	const ship = scene.children.filter(child => (child.name === 'ship'))[0]
+	if (ship && inter && inter.object.parent && tabs.has(inter.object.parent.name)) {
+		if (bullets.length === 0){
+			bulletTracking(ship, inter.object.parent)
+			laser.currentTime = 0
+			laser.play()
 
-	if ( ship && inter && inter.object.parent && inter.object.parent.parent && tabs.has(inter.object.parent.parent.name) ) {
-		if (bullets.length == 0){
-			bulletTracking(ship, inter.object.parent.parent)	
+		}
+	} else if ( ship && inter && inter.object.parent && inter.object.parent.parent && tabs.has(inter.object.parent.parent.name) ) {
+		if (bullets.length === 0){
+			bulletTracking(ship, inter.object.parent.parent)
+			laser.currentTime = 0
+			laser.play()
 		}
 	}
 		
