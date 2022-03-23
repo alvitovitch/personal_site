@@ -322,6 +322,7 @@ function animation() {
 			bullet[1].spin = .05
 			for (let tab of tabs) {
 				document.getElementById(tab).style.opacity = 0
+				setTimeout( () => { if (tab !== bullet[1].name) {document.getElementById(tab).style.display = 'none';}}, 1000)
 			}
 			setInterval(() => {
 				if (bullet[1].spin > .02) {
@@ -333,8 +334,13 @@ function animation() {
 						if (bullet[1].name === 'resume'){
 							window.open(
 								"./src/images/Vitovitch-Andrew-Resume.pdf", "_blank");
+						  } else if (bullet[1].name === 'home'){
+
+						  } else {
+							  document.getElementById(bullet[1].name).style.display = 'flex'
+							  setTimeout(() => {document.getElementById(bullet[1].name).style.opacity = 1}, 100)
+							  
 						  }
-						document.getElementById(bullet[1].name).style.opacity = 1
 						bullets.pop(bullets.indexOf(bullet))
 					}
 			}}, 90)

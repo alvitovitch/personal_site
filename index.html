@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
     <link rel="stylesheet" type="text/css" href="src/styles/reset.css">
     <link rel="stylesheet" type="text/css" href="src/styles/main.css">
     <!-- <link rel="stylesheet" href="../dist/main.css" /> -->
@@ -14,7 +15,30 @@
     <!-- <meta property="og:image" content="./src/assets/DnD.gif" />
     <meta property="og:description" content="Welcome to Down and Dandy! A point and click mystery. Gary has sabatoging your haberdashery and it's up to you to prove it! Pick up clues and talk to NPCs to figure out the mystery. Made with JavaScript and Three.js" />
     <meta property="og:url" content="https://alvitovitch.github.io/Down-and-Dandy/" /> -->
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">			
+		(function() {
+		emailjs.init("user_hsXIUKlejWEeRCifwuorL");
+		})();
+		</script>
+		<script type="text/javascript">
+			window.onload = function() {
+				document.getElementById('contact-form').addEventListener('submit', function(event) {
+					event.preventDefault();
+					// generate a five digit number for the contact_number variable
+					this.contact_number.value = Math.random() * 100000 | 0;
+					// these IDs from the previous steps
+					emailjs.sendForm('service_fpdu5yt', 'template_czyvpii', this)
+						.then(function() {
+							console.log('SUCCESS!');
+							const dataForm = document.getElementById('contact-form')
+							dataForm.innerHTML = "<h2>Thanks for reaching out!</h2>"
+						}, function(error) {
+							console.log('FAILED...', error);
+						});
+				});
+			}
+		</script>
 </head>
 
 <body>
@@ -85,11 +109,45 @@
                 </section>
             </div>
         </div>
-        <div class="content" id="contact"></div>
-        <div class="content" id="home"></div>
-        <div class="content" id="links"></div>
-        <div class="content" id="resume"></div>
     </div>
+    <div class="content" id="contact">
+        <div id="footer" class="container">
+            <header class="major">
+                <h2>Hit me up</h2>
+                <p>I'll get back ASAP</p>
+            </header>
+                    <form id="contact-form">
+                            <div>
+                                <input name="name" placeholder="Name" type="text" />
+                                <input name="email" placeholder="Email" type="text" />
+                            </div>
+                            <div>
+                                <textarea name="message" placeholder="Message"></textarea>
+                            </div>
+                            
+                                <ul class="actions">
+                                    <li><input type="submit" value="Send Message" /></li>
+                                    <li><input type="reset" value="Clear form" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+
+        </div>
+    </div>
+    <div class="content" id="home"></div>
+    <div class="content" id="links">
+        <ul>
+            <li>
+                <a href="https://www.linkedin.com/in/alvitovitch/" target="_blank"><img src="src/images/logos/linkedin-svgrepo-com.svg" alt=""></a>
+            </li>
+            <li><a href="https://github.com/alvitovitch" target="_blank"><img src="src/images/logos/github-svgrepo-com.svg" alt=""></a></li>
+            <li><a href="https://angel.co/u/andrew-vitovitch" target="_blank"><img src="src/images/logos/angellist-svgrepo-com.svg" alt=""></a></li>
+            <li><a href="https://www.instagram.com/brooklyn_dandy/?hl=en" target="_blank"><img src="src/images/logos/instagram-svgrepo-com.svg" alt=""></a></li>
+        </ul>
+    </div>
+    <div class="content" id="resume"></div>
+</div>
 </body>
     <script src="./dist/main.js"></script>
 </html>
