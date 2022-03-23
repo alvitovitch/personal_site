@@ -19,9 +19,9 @@ collect.volume = .1
 let collectPlay = true
 
 const params = {
-	exposure: 4,
-	bloomStrength: 2.4,
-	bloomThreshold: 0.01,
+	exposure: 1,
+	bloomStrength: .55,
+	bloomThreshold: 0,
 	bloomRadius: 0
 };
 const clock = new THREE.Clock()
@@ -224,11 +224,11 @@ loader.load('src/models/ship.gltf', function (gltf) {
 	
 })
 
-const ambLight = new THREE.HemisphereLight( 0xffffbb, 0x34568b, .6)
+const ambLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 20)
 scene.add(ambLight)
 
 
-const renderer = new THREE.WebGLRenderer( { antialias: true } );
+const renderer = new THREE.WebGLRenderer( { antialias: true, alpha: false } );
 renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.toneMapping = THREE.ReinhardToneMapping;
 renderer.setAnimationLoop( animation );
@@ -238,7 +238,7 @@ renderer.autoClear = false;
 document.body.appendChild( renderer.domElement );
 
 const bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 );
-bloomPass.setSize(window.innerWidth, window.innerHeight)
+bloomPass.setSize((1.0 / window.innerWidth * window.devicePixelRatio ), (1.0 / window.innerHeight * window.devicePixelRatio))
 bloomPass.threshold = params.bloomThreshold;
 bloomPass.strength = params.bloomStrength;
 bloomPass.radius = params.bloomRadius;
@@ -249,12 +249,13 @@ const renderScene = new RenderPass( scene, camera );
 const composer = new EffectComposer( renderer );
 composer.renderToScreen = true
 composer.setSize(window.innerWidth, window.innerHeight)
+composer.setPixelRatio(window.devicePixelRatio)
 composer.addPass( renderScene );
 composer.addPass( bloomPass );
 
 
 // galaxy material
-const textureLoader =  new THREE.TextureLoader().load("src/texture/galaxy1.png")
+const textureLoader =  new THREE.TextureLoader().load("src/texture/galaxy2.png")
 const starMaterial = new THREE.MeshBasicMaterial({
 map: textureLoader,
 side: THREE.BackSide,
@@ -358,7 +359,7 @@ function animation() {
 				setTimeout( () => { if (tab !== bullet[1].name) {document.getElementById(tab).style.display = 'none';}}, 1000)
 			}
 			setInterval(() => {
-				if (bullet[1].spin > .02) {
+				if (bullet[1].spin > .05) {
 					bullet[1].spin -= .003
 				} else {
 					if (bullet[1].rotation.y > 6.2){

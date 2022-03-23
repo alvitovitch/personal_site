@@ -131,6 +131,7 @@ header p {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    gap: 2vw;
 }
 
 .image-wrapper {
@@ -152,6 +153,7 @@ header h3 {
 section p {
     text-align: center;
     margin: 1em 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .actions {
