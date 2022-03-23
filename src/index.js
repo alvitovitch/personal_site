@@ -195,6 +195,19 @@ loader.load('src/models/contact.gltf', function (gltf) {
 	scene.add(model)
 	
 })
+loader.load('src/models/name.gltf', function (gltf) {
+	const model = gltf.scene;
+	model.name = 'name'
+	model.scale.x = .08 
+	model.scale.y = .08
+	model.scale.z = .08
+	model.position.x = -1;
+	model.position.z = -.4
+	model.position.y = .2
+	model.spin = 0
+	scene.add(model)
+	
+})
 
 
 loader.load('src/models/ship.gltf', function (gltf) {
@@ -317,6 +330,9 @@ function animation() {
 		}
 		if (tabs.has(child.name)) {
 			child.position.y = Math.cos( time ) * .01 + .34
+		}
+		if (child.name === 'name') {
+			child.position.y = Math.cos( time ) * .01 + .1
 		}
 	}
 	if (intersects[0].object.name === 'track') {
