@@ -369,7 +369,7 @@ function animation() {
 						bullet[1].rotation.y = 0
 						if (bullet[1].name === 'resume'){
 							window.open(
-								"./src/images/Vitovitch-Andrew-Resume.pdf", "_blank");
+								"./src/images/Vitovitch-Andrew-Resume.pdf", "about:blank");
 						  } else if (bullet[1].name === 'home'){
 
 						  } else {
