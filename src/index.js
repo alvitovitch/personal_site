@@ -350,7 +350,7 @@ function animation() {
 	for (let bullet of bullets) {
 		bullet[0].translateZ(.015)
 		if (bullet[0].position.z < -.4){
-			bullet[1].spin = .09
+			bullet[1].spin = .07
 			if (collectPlay){
 				collect.currentTime = 0
 				collect.play()
@@ -361,12 +361,10 @@ function animation() {
 				setTimeout( () => { if (tab !== bullet[1].name) {document.getElementById(tab).style.display = 'none';}}, 1000)
 			}
 			setInterval(() => {
-				if (bullet[1].spin > .07) {
-					bullet[1].spin -= .005
-				} else if (bullet[1].spin > .05) {
+				if (bullet[1].spin > .055) {
 					bullet[1].spin -= .003
 				} else{
-					if (bullet[1].rotation.y > 6.1){
+					if (bullet[1].rotation.y > 6.2){
 						bullet[1].spin = 0
 						bullet[1].rotation.y = 0
 						if (bullet[1].name === 'resume'){
@@ -381,7 +379,7 @@ function animation() {
 						  }
 						bullets.pop(bullets.indexOf(bullet))
 					}
-			}}, 90)
+			}}, 80)
 			scene.remove(bullet[0])
 		}
 	}
@@ -445,7 +443,6 @@ document.addEventListener('click', e => {
 		}
 	}
 	if (e.target.classList[0] === 'close') {
-		debugger
 		e.target.parentElement.style.opacity = 0
 		setTimeout( () => {
 			e.target.parentElement.style.display = 'none'
