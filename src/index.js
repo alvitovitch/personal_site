@@ -310,7 +310,7 @@ function bulletTracking(ship, target) {
 	setInterval(() => {
 		if(bullet) {
 			scene.remove(bullet)}
-	}, 1000)
+	}, 2000)
 }
 // animation
 
@@ -346,9 +346,9 @@ function animation() {
 	}
 
 	for (let bullet of bullets) {
-		bullet[0].translateZ(.01)
+		bullet[0].translateZ(.015)
 		if (bullet[0].position.z < -.4){
-			bullet[1].spin = .05
+			bullet[1].spin = .07
 			if (collectPlay){
 				collect.currentTime = 0
 				collect.play()
