@@ -350,7 +350,8 @@ function animation() {
 	for (let bullet of bullets) {
 		bullet[0].translateZ(.015)
 		if (bullet[0].position.z < -.4){
-			bullet[1].spin = .07
+			// bullet[1].spin = .07
+			const spinterval = setInterval(spinTarget(bullet[1]), 100)
 			if (collectPlay){
 				collect.currentTime = 0
 				collect.play()
@@ -360,13 +361,14 @@ function animation() {
 				document.getElementById(tab).style.opacity = 0
 				setTimeout( () => { if (tab !== bullet[1].name) {document.getElementById(tab).style.display = 'none';}}, 1000)
 			}
+			
 			setInterval(() => {
-				if (bullet[1].spin > .055) {
-					bullet[1].spin -= .003
-				} else{
-					if (bullet[1].rotation.y > 6.2){
-						bullet[1].spin = 0
-						bullet[1].rotation.y = 0
+				// if (bullet[1].spin > .055) {
+				// 	bullet[1].spin -= .003
+				// } else{
+				// 	if (bullet[1].rotation.y > 6.2){
+				// 		bullet[1].spin = 0
+				// 		bullet[1].rotation.y = 0
 						if (bullet[1].name === 'resume'){
 							window.open(
 								"./src/images/Vitovitch-Andrew-Resume.pdf", "_blank");
@@ -379,9 +381,12 @@ function animation() {
 						  }
 						bullets.pop(bullets.indexOf(bullet))
 					}
-			}}, 80)
+			, 80)
 			scene.remove(bullet[0])
 		}
+	}
+	if (num > 6280) {
+		clearInterval(0)
 	}
 	renderer.render( scene, camera );
 	composer.render()
@@ -423,6 +428,14 @@ function onWindowResize(){
     renderer.setSize( window.innerWidth, window.innerHeight );
 
 }
+let num = 0
+const spinTarget  = (target) => {
+	target.rotation.y += .1
+	num += 1
+}
+
+
+
 
 document.addEventListener('click', e => {
 	synth.play()
