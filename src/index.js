@@ -324,7 +324,7 @@ function animation() {
 			if (child.position.z >= 2.41){
 				child.position.z = -7.23
 			}
-			child.position.z += .004
+			child.position.z += .007
 		}
 		if (child.name === 'stars'){
 			child.rotation.x += .0001
@@ -348,7 +348,7 @@ function animation() {
 	for (let bullet of bullets) {
 		bullet[0].translateZ(.015)
 		if (bullet[0].position.z < -.4){
-			bullet[1].spin = .07
+			bullet[1].spin = .09
 			if (collectPlay){
 				collect.currentTime = 0
 				collect.play()
@@ -359,10 +359,12 @@ function animation() {
 				setTimeout( () => { if (tab !== bullet[1].name) {document.getElementById(tab).style.display = 'none';}}, 1000)
 			}
 			setInterval(() => {
-				if (bullet[1].spin > .05) {
+				if (bullet[1].spin > .07) {
+					bullet[1].spin -= .005
+				} else if (bullet[1].spin > .05) {
 					bullet[1].spin -= .003
-				} else {
-					if (bullet[1].rotation.y > 6.2){
+				} else{
+					if (bullet[1].rotation.y > 6.1){
 						bullet[1].spin = 0
 						bullet[1].rotation.y = 0
 						if (bullet[1].name === 'resume'){
