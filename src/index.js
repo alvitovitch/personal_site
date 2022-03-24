@@ -329,7 +329,7 @@ function animation() {
 			child.position.z += .007
 		}
 		if (child.name === 'stars'){
-			child.rotation.x += .0001
+			child.rotation.x += .0002
 		}
 		if (tabs.has(child.name)) {
 			child.position.y = Math.cos( time ) * .01 + .34
