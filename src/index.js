@@ -7,6 +7,8 @@ import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPa
 
 const synth = new Audio('src/sound/synth.mp3');
 synth.volume = .1
+synth.playbackRate = 1.1
+
 synth.play()
 
 
