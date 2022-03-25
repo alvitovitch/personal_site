@@ -197,7 +197,7 @@ loader.load('src/models/contact.gltf', function (gltf) {
 	scene.add(model)
 	
 })
-loader.load('src/models/name.gltf', function (gltf) {
+loader.load('src/models/nameTwo.gltf', function (gltf) {
 	const model = gltf.scene;
 	model.name = 'name'
 	model.scale.x = .08 
@@ -288,6 +288,15 @@ scene.add(cube)
 // bullet
 
 const bullets = []
+const red = new THREE.MeshBasicMaterial( {color: 0xED0003} );
+const orange = new THREE.MeshBasicMaterial( {color: 0xFF8600} );
+const yellow = new THREE.MeshBasicMaterial( {color: 0xFFFE37} );
+const green = new THREE.MeshBasicMaterial( {color: 0x01FE01} );
+const blue = new THREE.MeshBasicMaterial( {color: 0x3500FF} );
+const purple = new THREE.MeshBasicMaterial( {color: 0x8C00FC	} );
+const materials = [red, orange, yellow, green, blue, purple]
+
+const white = new THREE.MeshBasicMaterial( {color: 0xffffff} )
 // const bulletGeo = new THREE.SphereGeometry(.1,.1,.1)
 // const bullet = new THREE.Mesh( bulletGeo, material)
 // bullet.visible = false
@@ -298,8 +307,9 @@ const bullets = []
 
 
 function bulletTracking(ship, target) {
-	const bulletGeo = new THREE.SphereGeometry(.01,.01,.01)
-	const bullet = new THREE.Mesh( bulletGeo, material)
+	const bulletGeo = new THREE.SphereGeometry(.01,.02,.01)
+	const bullet = new THREE.Mesh( bulletGeo, white)
+	materials.push(materials.shift())
 	bullet.visible = false
 	bullet.name = 'bullet'
 	scene.add(bullet)
@@ -335,7 +345,7 @@ function animation() {
 			child.position.y = Math.cos( time ) * .01 + .34
 		}
 		if (child.name === 'name') {
-			child.position.y = Math.cos( time ) * .01 +.05
+			child.position.y = Math.cos( time ) * .01 +.065
 		}
 	}
 	if (intersects[0].object.name === 'track') {
