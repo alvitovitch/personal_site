@@ -148,16 +148,22 @@ header p {
 
 header h3 {
     font-size: 4vh;
+    margin: 2vh 0;
 }
 
 section p {
     text-align: center;
     margin: 1em 0;
     line-height: 1.4;
+    padding: 1vh;
 }
 
 .actions {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 .actions li {
@@ -290,4 +296,21 @@ input[name=rangeInput] {
     opacity: 0;
     transition: .5s;
     font-size: 3vh;
+}
+
+.button-link {
+    background-color: black;
+    box-shadow: 0 0 .1em .1em rgb(255, 174, 0),  /* inner white */
+    0 0 .2em .2em rgb(255, 153, 0), /* middle magenta */
+    0 0 .4em .4em rgb(255, 146, 57); /* outer cyan */;
+    border-radius: 1em;
+    font-size: 2.5vh;
+    padding: 1vh;
+    font-family: 'myFirstFont';
+    width: 50%;
+}
+
+.button-link a {
+    text-decoration: none;
+    color: orange;
 }
