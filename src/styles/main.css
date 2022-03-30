@@ -43,49 +43,49 @@ canvas {
 }
 
 #about {
-    box-shadow: 0 0 .2em .2em rgb(255, 0, 0),  /* inner white */
-    0 0 .4em .4em rgb(255, 47, 47), /* middle magenta */
-    0 0 .6em .6em rgb(255, 94, 94); /* outer cyan */;
+    box-shadow: 0 0 .2vh .2vh rgb(255, 0, 0),  /* inner white */
+    0 0 .4vh .4vh rgb(255, 47, 47), /* middle magenta */
+    0 0 .6vh .6vh rgb(255, 94, 94); /* outer cyan */;
 }
 
 #projects {
-    box-shadow: 0 0 .2em .2em rgb(255, 123, 0),  /* inner white */
-    0 0 .4em .4em rgb(255, 102, 0), /* middle magenta */
-    0 0 .6em .6em rgb(255, 130, 57); /* outer cyan */;
+    box-shadow: 0 0 .2vh .2vh rgb(255, 123, 0),  /* inner white */
+    0 0 .4vh .4vh rgb(255, 102, 0), /* middle magenta */
+    0 0 .6vh .6vh rgb(255, 130, 57); /* outer cyan */;
 }
 #home {
-    box-shadow: 0 0 .2em .2em rgb(251, 255, 0),  /* inner white */
-    0 0 .4em .4em rgb(252, 255, 47), /* middle magenta */
-    0 0 .6em .6em rgb(255, 244, 94); /* outer cyan */;
+    box-shadow: 0 0 .2vh .2vh rgb(251, 255, 0),  /* inner white */
+    0 0 .4vh .4vh rgb(252, 255, 47), /* middle magenta */
+    0 0 .6vh .6vh rgb(255, 244, 94); /* outer cyan */;
 }
 #links {
     width: 70%;
-    box-shadow: 0 0 .2em .2em rgb(115, 255, 0),  /* inner white */
-    0 0 .4em .4em rgb(47, 255, 71), /* middle magenta */
-    0 0 .6em .6em rgb(121, 255, 94); /* outer cyan */;
+    box-shadow: 0 0 .2vh .2vh rgb(115, 255, 0),  /* inner white */
+    0 0 .4vh .4vh rgb(47, 255, 71), /* middle magenta */
+    0 0 .6vh .6vh rgb(121, 255, 94); /* outer cyan */;
 }
 #resume {
-    box-shadow: 0 0 .2em .2em rgb(0, 229, 255),  /* inner white */
-    0 0 .4em .4em rgb(47, 234, 255), /* middle magenta */
-    0 0 .6em .6em rgb(94, 234, 255); /* outer cyan */;
+    box-shadow: 0 0 .2vh .2vh rgb(0, 229, 255),  /* inner white */
+    0 0 .4vh .4vh rgb(47, 234, 255), /* middle magenta */
+    0 0 .6vh .6vh rgb(94, 234, 255); /* outer cyan */;
 }
 #contact {
     width: 60%;
-    box-shadow: 0 0 .2em .2em rgb(187, 0, 255),  /* inner white */
-    0 0 .4em .4em rgb(147, 47, 255), /* middle magenta */
-    0 0 .6em .6em rgb(204, 94, 255); /* outer cyan */;
+    box-shadow: 0 0 .2vh .2vh rgb(187, 0, 255),  /* inner white */
+    0 0 .4vh .4vh rgb(147, 47, 255), /* middle magenta */
+    0 0 .6vh .6vh rgb(204, 94, 255); /* outer cyan */;
 }
 
 #poke {
-    height: 15em;
-    border-radius: 1em;
+    height: 35vh;
+    border-radius: 5vh;
     width: auto;
     
 }
 
 #poke-about {
     display: flex;
-    gap: 2em;
+    gap: 2vh;
     align-items: center;
     
 }
@@ -94,17 +94,17 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5em;
-    margin-bottom: 1em;
+    gap: 0.5vh;
+    margin-bottom: 1vh;
 }
 
 header h2 {
-    font-size: 3em;
+    font-size: 7vh;
 }
 
 header p {
-    font-size: 2em;
-    line-height: 1.5;
+    font-size: 2vh;
+    line-height: 1.7;
 }
 
 ::-webkit-scrollbar {
@@ -115,9 +115,9 @@ header p {
     border-radius: 15px;
     border: rgba(0, 0, 0, 0.415) solid 1px;
     width: 18vw;
-    box-shadow: 0 0 .1em .1em rgb(255, 174, 0),  /* inner white */
-    0 0 .2em .2em rgb(255, 153, 0), /* middle magenta */
-    0 0 .4em .4em rgb(255, 146, 57); /* outer cyan */;
+    box-shadow: 0 0 .1vh .1vh rgb(255, 174, 0),  /* inner white */
+    0 0 .2vh .2vh rgb(255, 153, 0), /* middle magenta */
+    0 0 .4vh .4vh rgb(255, 146, 57); /* outer cyan */;
 }
 
 .row {
@@ -142,18 +142,19 @@ header p {
 
 #whet {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1vh;
     font-size: 5vh;
 }
 
 header h3 {
     font-size: 4vh;
     margin: 2vh 0;
+    text-align: center;
 }
 
 section p {
     text-align: center;
-    margin: 1em 0;
+    margin: 1vh 0;
     line-height: 1.4;
     padding: 1vh;
 }
@@ -186,7 +187,7 @@ section p {
 
 #links li img {
     filter: invert(1);
-    height: 8em;
+    height: 8vh;
 
 }
 
@@ -232,11 +233,11 @@ input[name=rangeInput] {
     display: flex;
     flex-direction: column;
     width: 80%;
-    margin: 1em;
-    box-shadow: 0 0 .2em .2em rgb(187, 0, 255),  /* inner white */
-    0 0 .4em .4em rgb(147, 47, 255), /* middle magenta */
-    0 0 .6em .6em rgb(204, 94, 255); /* outer cyan */;
-    border-radius: 1em;
+    margin: 1vh;
+    box-shadow: 0 0 .2vh .2vh rgb(187, 0, 255),  /* inner white */
+    0 0 .4vh .4vh rgb(147, 47, 255), /* middle magenta */
+    0 0 .6vh .6vh rgb(204, 94, 255); /* outer cyan */;
+    border-radius: 1vh;
     background-color: rgb(228, 228, 228);
 }
 
@@ -259,9 +260,9 @@ input[name=rangeInput] {
 }
 
 .form-button {
-    box-shadow: 0 0 .1em .1em rgb(187, 0, 255), /* inner white */ 0 0 .2em .2em rgb(147, 47, 255), /* middle magenta */ 0 0 .3em .3em rgb(204, 94, 255);
+    box-shadow: 0 0 .1vh .1vh rgb(187, 0, 255), /* inner white */ 0 0 .2vh .2vh rgb(147, 47, 255), /* middle magenta */ 0 0 .3vh .3vh rgb(204, 94, 255);
     border-style: none;
-    border-radius: 1em;
+    border-radius: 1vh;
     padding: 1vh;
     background: #8e00e95c;
     color: white;
@@ -300,10 +301,10 @@ input[name=rangeInput] {
 
 .button-link {
     background-color: black;
-    box-shadow: 0 0 .1em .1em rgb(255, 174, 0),  /* inner white */
-    0 0 .2em .2em rgb(255, 153, 0), /* middle magenta */
-    0 0 .4em .4em rgb(255, 146, 57); /* outer cyan */;
-    border-radius: 1em;
+    box-shadow: 0 0 .1vh .1vh rgb(255, 174, 0),  /* inner white */
+    0 0 .2vh .2vh rgb(255, 153, 0), /* middle magenta */
+    0 0 .4vh .4vh rgb(255, 146, 57); /* outer cyan */;
+    border-radius: 1vh;
     font-size: 2.5vh;
     padding: 1vh;
     font-family: 'myFirstFont';
