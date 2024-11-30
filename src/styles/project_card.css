@@ -1,0 +1,30 @@
+.project-card {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(3, auto);
+    gap: 1vh;
+
+    header {
+        grid-column: 4;
+        grid-row: 1;
+    }
+
+    .image-wrapper {
+        grid-column: 1 / 4;
+        grid-row: 1 / 4;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    p {
+        grid-column: 4;
+        grid-row: 2;
+    }
+
+    .actions {
+        grid-column: 4;
+        grid-row: 3;
+    }
+}
